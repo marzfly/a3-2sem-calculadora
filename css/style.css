@@ -160,3 +160,55 @@ select:focus-visible {
   background-color: #e5e2c8;
   overflow-wrap: anywhere;
 }
+/* Seções da página de funções */
+.container .panel {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px dashed #777950;
+}
+
+/* Fórmula e resultado em destaque */
+.container .formula,
+.container .result-value {
+  padding: 16px;
+  background-color: #e5e2c8;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Espaço entre os botões */
+.container .actions button {
+  margin-top: 16px;
+  margin-right: 8px;
+}
+
+/* O gráfico precisa de uma altura definida para caber no painel. */
+.container .chart-wrap {
+  position: relative;
+  height: 300px;
+  margin-top: 16px;
+  padding: 10px;
+  background-color: #f0efdf;
+}
+
+/* Espaço entre os dados da análise e da tabela. */
+.container .analysis-item {
+  margin-top: 12px;
+}
+
+.container .analysis-item strong {
+  display: block;
+  margin-top: 4px;
+}
+
+.container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.container th,
+.container td {
+  padding: 10px;
+  border-bottom: 1px solid #8a8b6d;
+  text-align: left;
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Calculadora de funções matemáticas de primeiro e segundo grau.">
+  <title>Funções | Calculadora Matemática</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/functions.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <div>
+        <p class="eyebrow">MATH / 001</p>
+        <h1>Funções</h1>
+        <p class="subtitle">Explore funções matemáticas de primeiro e segundo grau.</p>
+      </div>
+      <span class="status">CALCULADORA</span>
+    </header>
+
+    <section class="panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">CONFIGURAÇÃO</p>
+          <h2>Defina sua função</h2>
+        </div>
+      </div>
+
+      <label for="degree">Tipo de função</label>
+      <select id="degree">
+        <option value="1">Função de 1º grau</option>
+        <option value="2">Função de 2º grau</option>
+      </select>
+
+      <div class="formula" id="formula">f(x) = ax + b</div>
+
+      <div class="fields">
+        <div class="field">
+          <label for="a">Coeficiente a</label>
+          <input type="number" id="a" step="any" value="2">
+        </div>
+        <div class="field">
+          <label for="b">Coeficiente b</label>
+          <input type="number" id="b" step="any" value="-4">
+        </div>
+        <div class="field" id="c-field" hidden>
+          <label for="c">Coeficiente c</label>
+          <input type="number" id="c" step="any" value="2">
+        </div>
+        <div class="field">
+          <label for="x">Valor de x</label>
+          <input type="number" id="x" step="any" value="3">
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="calculate" type="button">Calcular função</button>
+        <button id="reset" class="secondary" type="button">Restaurar valores</button>
+      </div>
+      <p class="message" id="message" role="alert"></p>
+    </section>
+
+    <section class="results" id="results" aria-live="polite">
+      <article class="panel result-main">
+        <p class="eyebrow">RESULTADO PRINCIPAL</p>
+        <h2 id="function-title">f(x) = 2x - 4</h2>
+        <p class="result-label" id="fx-label">f(3)</p>
+        <p class="result-value" id="fx-result">2</p>
+      </article>
+
+      <article class="panel">
+        <p class="eyebrow">ANÁLISE MATEMÁTICA</p>
+        <div id="analysis" class="analysis"></div>
+      </article>
+
+      <article class="panel chart-panel">
+        <div>
+          <p class="eyebrow">VISUALIZAÇÃO</p>
+          <h2>Gráfico da função</h2>
+        </div>
+        <div class="chart-wrap">
+          <canvas id="function-chart" aria-label="Gráfico da função matemática"></canvas>
+        </div>
+      </article>
+
+      <article class="panel table-panel">
+        <p class="eyebrow">VALORES DA FUNÇÃO</p>
+        <h2>Tabela de valores</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>x</th><th>f(x)</th></tr></thead>
+            <tbody id="value-table"></tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
