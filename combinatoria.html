@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Análise Combinatória | Euler</title>
+  <script src="./js/script.js" defer></script>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <div>
+    <a class="voltar" href="index.html">Voltar ao menu</a>
+  </div>
+    <div class="container">
+    <header>
+      <h1>Calculadora de Análise Combinatória</h1>
+      <p>Fatorial, permutações, arranjos e combinações, com e sem repetição.</p>
+    </header>
+
+  <main>
+    <form id="form" novalidate>
+      <div>
+        <label for="tipo">Tipo de cálculo</label>
+        <select id="tipo">
+          <option value="fatorial">Fatorial: n!</option>
+          <option value="permSimples">Permutação simples: P(n)</option>
+          <option value="permRep">Permutação com repetição</option>
+          <option value="permCircular">Permutação circular</option>
+          <option value="arranjoSimples">Arranjo simples: A(n, k)</option>
+          <option value="arranjoRep">Arranjo com repetição</option>
+          <option value="combSimples" selected>Combinação simples: C(n, k)</option>
+          <option value="combRep">Combinação com repetição</option>
+        </select>
+      </div>
+      
+      <p id="descricao"></p>
+      
+      <div id="campo-n">
+        <label for="n">n (total de elementos)</label>
+        <input id="n" type="number" min="0" step="1" value="10">
+      </div>
+
+      <div id="campo-k">
+        <label for="k">k (elementos escolhidos)</label>
+        <input id="k" type="number" min="0" step="1" value="3">
+      </div>
+      
+      <div id="campo-reps" hidden>
+        <label for="reps">Repetições de cada elemento (separadas por vírgula)</label>
+        <input id="reps" type="text" value="2, 3, 1" placeholder="Ex.: 2, 3, 1">
+        <p>Exemplo: a palavra ANANAS tem A=3, N=2, S=1, então digite 3, 2, 1.</p>
+      </div>
+      
+      <button type="submit">Calcular</button>
+    </form>
+    
+    <p id="erro" role="alert"></p>
+    
+    <section id="saida" aria-live="polite" hidden>
+      <h2>Resultado</h2>
+      <p>Fórmula: <code id="formula"></code></p>
+      <p>Substituindo: <code id="substituicao"></code></p>
+      <p>Resultado: <strong id="resultado"></strong></p>
+      <p id="digitos"></p>
+    </section>
+  </main>
+  
+  <footer>
+  </footer>
+</div>
+</body>
+</html>

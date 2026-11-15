@@ -1,0 +1,162 @@
+﻿/* Estilo geral da página */
+body {
+  margin: 0;
+  padding: 40px 20px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  /* O caminho parte da pasta css e entra na pasta assets. */
+  background-color: #263321;
+  /* A camada escura sobre a foto ajuda a destacar o painel. */
+  background-image: linear-gradient(rgba(8, 12, 7, 0.35), rgba(8, 12, 7, 0.65)),
+    url("../assets/WhatsApp Image 2026-11-15 at 14.09.56.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #27291d;
+  font-family: "Courier New", monospace;
+}
+
+/* Painel com aparência de papel velho */
+.container {
+  max-width: 480px;
+  margin: 30px auto;
+  padding: 30px;
+  background-color: rgba(215, 211, 172, 0.94);
+  /* Linhas finas criam uma textura sem precisar de outra imagem. */
+  background-image: repeating-linear-gradient(
+    0deg, transparent, transparent 3px, rgba(55, 49, 26, 0.05) 4px
+  );
+  border: 1px solid #8c8a66;
+  border-top: 7px solid #343b27;
+  border-radius: 2px;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.4);
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 26px;
+  letter-spacing: -1px;
+}
+
+p {
+  line-height: 1.5;
+}
+
+/* Nome do projeto no menu */
+.logo {
+  margin-bottom: 20px;
+  color: #60572f;
+  font-family: Impact, "Arial Black", sans-serif;
+  font-size: 84px;
+  font-weight: normal;
+  letter-spacing: -4px;
+  text-align: center;
+  text-shadow: 2px 2px #e2d9ad, 4px 4px #92865c;
+  transform: rotate(-3deg);
+}
+
+/* Opções do menu, uma abaixo da outra */
+.menu a {
+  display: block;
+  margin-top: 12px;
+  text-decoration: none;
+  text-align: left;
+}
+
+/* Aparência dos botões e dos links do menu */
+button,
+.menu a,
+.voltar {
+  padding: 12px 18px;
+  border: 1px solid #666b4c;
+  border-radius: 2px;
+  background-color: #e1dfc7;
+  color: #27291d;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 3px 3px 0 #666b4c;
+  cursor: pointer;
+}
+
+button:hover,
+.menu a:hover,
+.voltar:hover {
+  background-color: #c6c895;
+}
+
+/* O botão parece afundar quando é pressionado. */
+button:active,
+.menu a:active,
+.voltar:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+/* A faixa na lateral lembra as opções de um menu antigo. */
+.menu a {
+  border-left: 6px solid #656b43;
+}
+
+/* Destaque para o botão de calcular */
+button[type="submit"] {
+  width: 100%;
+  margin-top: 20px;
+  border-color: #493b25;
+  background-color: #665136;
+  color: #fff9e7;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+button[type="submit"]:hover {
+  background-color: #4d3d28;
+}
+
+.voltar {
+  display: inline-block;
+  text-decoration: none;
+}
+
+/* Campos da calculadora */
+label {
+  display: block;
+  margin-top: 16px;
+  margin-bottom: 6px;
+}
+
+input,
+select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #8a8b6d;
+  border-bottom: 2px solid #656b43;
+  border-radius: 0;
+  background-color: #f0efdf;
+  color: #27291d;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+/* Destaque ao navegar usando a tecla Tab */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid #79613b;
+  outline-offset: 3px;
+}
+
+#erro {
+  color: #8b2525;
+}
+
+#saida {
+  margin-top: 20px;
+  padding: 16px;
+  border: 1px dashed #777950;
+  border-radius: 0;
+  background-color: #e5e2c8;
+  overflow-wrap: anywhere;
+}
