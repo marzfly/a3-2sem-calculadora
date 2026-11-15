@@ -1,4 +1,6 @@
 // Calculadora de Análise Combinatória
+// Implementação original: Bernardo Rocha Fernando (@bernardo486).
+// O módulo recebeu integração e ajustes posteriores no projeto.
 // Usa BigInt para resultados exatos, mesmo com números enormes.
 
 const $ = (id) => document.getElementById(id);
