@@ -1,79 +1,15 @@
 const visor = document.getElementById('visor');
 const mensagem = document.getElementById('mensagem-calculadora');
+let resultadoConcluido = false;
 
-// Lê a expressão em partes, respeitando parênteses e a ordem das operações.
-// Assim o texto digitado não é executado como código JavaScript.
+// O leitor de expressões fica em matematica.js e é compartilhado com Funções.
 function avaliarExpressao(texto) {
-  const expressao = texto.trim().replace(/,/g, '.');
-  let posicao = 0;
-  if (expressao === '') throw new Error('Digite um número ou expressão.');
-
-  function consumir(simbolo) {
-    while (/\s/.test(expressao[posicao] || '') && posicao < expressao.length) posicao++;
-    if (expressao[posicao] === simbolo) {
-      posicao++;
-      return true;
-    }
-    return false;
-  }
-
-  function numero() {
-    if (consumir('(')) {
-      const valor = soma();
-      if (!consumir(')')) throw new Error('Falta fechar um parêntese.');
-      return valor;
-    }
-    // Aceita decimais e números grandes como 1e+20.
-    const encontrado = expressao.slice(posicao).match(/^(?:\d+\.?\d*|\.\d+)(?:e[+-]?\d+)?/i);
-    if (!encontrado) throw new Error('Confira os números e operadores da expressão.');
-    posicao += encontrado[0].length;
-    return Number(encontrado[0]);
-  }
-
-  function potencia() {
-    const base = numero();
-    if (consumir('^')) return Math.pow(base, sinal());
-    return base;
-  }
-
-  function sinal() {
-    if (consumir('+')) return sinal();
-    if (consumir('-')) return -sinal();
-    return potencia();
-  }
-
-  function produto() {
-    let valor = sinal();
-    while (true) {
-      if (consumir('*')) {
-        valor *= sinal();
-      } else if (consumir('/')) {
-        const divisor = sinal();
-        if (divisor === 0) throw new Error('Não é possível dividir por zero.');
-        valor /= divisor;
-      } else {
-        return valor;
-      }
-    }
-  }
-
-  function soma() {
-    let valor = produto();
-    while (true) {
-      if (consumir('+')) valor += produto();
-      else if (consumir('-')) valor -= produto();
-      else return valor;
-    }
-  }
-
-  const valor = soma();
-  if (posicao !== expressao.length) throw new Error('Expressão inválida. Use números e os operadores +, -, *, / e ^.');
-  if (!Number.isFinite(valor)) throw new Error('O resultado não é um número real finito.');
-  return valor;
+  return Matematica.avaliar(texto, undefined, document.getElementById('angulo').value);
 }
-
 function addnumero(numero) {
   mensagem.textContent = '';
+  if (resultadoConcluido) visor.value = '';
+  resultadoConcluido = false;
   // Inclui a multiplicação em expressões como 2(3 + 4).
   if (numero === '(' && /[\d.)]$/.test(visor.value.trim())) visor.value += '*';
   visor.value += numero;
@@ -81,6 +17,7 @@ function addnumero(numero) {
 
 function addoperador(operador) {
   mensagem.textContent = '';
+  resultadoConcluido = false;
   const texto = visor.value.trim();
   // Permite um número negativo após uma multiplicação, divisão ou potência.
   if (operador === '-' && (texto === '' || /[*/^(]$/.test(texto))) {
@@ -91,16 +28,19 @@ function addoperador(operador) {
 }
 
 function inserirConstante(valor) {
+  if (resultadoConcluido) visor.value = '';
   if (/[\d.)]$/.test(visor.value.trim())) visor.value += '*';
   addnumero(valor);
 }
 
 function limpar() {
+  resultadoConcluido = false;
   visor.value = '';
   mensagem.textContent = '';
 }
 
 function apagar() {
+  resultadoConcluido = false;
   visor.value = visor.value.slice(0, -1);
   mensagem.textContent = '';
 }
@@ -112,6 +52,7 @@ function executar(calculo) {
     const valor = calculo();
     if (!Number.isFinite(valor)) throw new Error('O resultado ultrapassou o limite numérico ou não é real.');
     visor.value = String(valor);
+    resultadoConcluido = true;
   } catch (erro) {
     mensagem.textContent = erro.message;
   }
@@ -166,4 +107,7 @@ visor.addEventListener('keydown', (evento) => {
   }
   if (evento.key === 'Escape') limpar();
 });
-visor.addEventListener('input', () => { mensagem.textContent = ''; });
+visor.addEventListener('input', () => {
+  resultadoConcluido = false;
+  mensagem.textContent = '';
+});

@@ -111,7 +111,7 @@ function mostrarResultado(resultado) {
     throw new Error('O resultado ultrapassou o limite numérico. Use valores menores.');
   }
   if (!Array.isArray(resultado)) {
-    area.textContent = 'Determinante de A: ' + resultado.toLocaleString('pt-BR');
+    area.textContent = 'Determinante de A: ' + Matematica.formatar(resultado);
     return;
   }
   const tabela = document.createElement('table');
@@ -119,7 +119,7 @@ function mostrarResultado(resultado) {
   for (const numeros of resultado) {
     const linha = tabela.insertRow();
     for (const numero of numeros) {
-      linha.insertCell().textContent = numero.toLocaleString('pt-BR', { maximumFractionDigits: 6 });
+      linha.insertCell().textContent = Matematica.formatar(numero);
     }
   }
   area.append(tabela);

@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Calculadora de funções matemáticas de primeiro e segundo grau.">
+  <meta name="description" content="Avaliação de funções, tabela por intervalo e gráfico, com validação do domínio real.">
   <title>Funções | Calculadora Matemática</title>
   <link rel="stylesheet" href="css/style.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+  <script src="js/matematica.js" defer></script>
   <script src="js/functions.js" defer></script>
 </head>
 <body>
@@ -16,7 +17,7 @@
       <div>
         <p class="eyebrow">MATH / 001</p>
         <h1>Funções</h1>
-        <p class="subtitle">Explore funções matemáticas de primeiro e segundo grau.</p>
+        <p class="subtitle">Avalie expressões, explore o domínio e gere uma tabela de valores.</p>
       </div>
       <span class="status">CALCULADORA</span>
     </header>
@@ -33,11 +34,18 @@
       <select id="degree">
         <option value="1">Função de 1º grau</option>
         <option value="2">Função de 2º grau</option>
+        <option value="expressao">Digitar uma expressão</option>
       </select>
 
       <div class="formula" id="formula">f(x) = ax + b</div>
 
-      <div class="fields">
+      <div id="campo-expressao" hidden>
+        <label for="expressao">Expressão f(x)</label>
+        <input type="text" id="expressao" value="x^2 - 4" aria-describedby="ajuda-expressao" maxlength="300">
+        <p id="ajuda-expressao">Exemplos: 2x² + 3x - 1, sqrt(x), 1/x, log(x). Use parênteses nas funções. sen, cos e tan usam radianos.</p>
+      </div>
+
+      <div class="fields" id="campos-coeficientes">
         <div class="field">
           <label for="a">Coeficiente a</label>
           <input type="number" id="a" step="any" value="2">
@@ -50,11 +58,21 @@
           <label for="c">Coeficiente c</label>
           <input type="number" id="c" step="any" value="2">
         </div>
-        <div class="field">
-          <label for="x">Valor de x</label>
-          <input type="number" id="x" step="any" value="3">
-        </div>
       </div>
+
+      <label for="x">Valor de x</label>
+      <input type="number" id="x" step="any" value="3">
+
+      <fieldset class="intervalo-funcao">
+        <legend>Intervalo da tabela e do gráfico</legend>
+        <label for="inicio">Início</label>
+        <input type="number" id="inicio" step="any" value="-2">
+        <label for="fim">Fim</label>
+        <input type="number" id="fim" step="any" value="2">
+        <label for="passo">Passo da tabela</label>
+        <input type="number" id="passo" step="any" value="1">
+        <p>Use passo positivo e até 201 linhas. Pontos fora do domínio são identificados na tabela.</p>
+      </fieldset>
 
       <div class="actions">
         <button id="calculate" type="button">Calcular função</button>
@@ -63,7 +81,7 @@
       <p class="message" id="message" role="alert"></p>
     </section>
 
-    <section class="results" id="results" aria-live="polite">
+    <section class="results" id="results" aria-live="polite" hidden>
       <article class="panel result-main">
         <p class="eyebrow">RESULTADO PRINCIPAL</p>
         <h2 id="function-title">f(x) = 2x - 4</h2>
@@ -84,6 +102,7 @@
         <div class="chart-wrap">
           <canvas id="function-chart" aria-label="Gráfico da função matemática"></canvas>
         </div>
+        <p id="graph-message" role="status"></p>
       </article>
 
       <article class="panel table-panel">
