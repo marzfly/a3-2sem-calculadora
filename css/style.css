@@ -4,16 +4,44 @@ body {
   padding: 40px 20px;
   min-height: 100vh;
   box-sizing: border-box;
-  /* O caminho parte da pasta css e entra na pasta assets. */
   background-color: #263321;
-  /* A camada escura sobre a foto ajuda a destacar o painel. */
-  background-image: linear-gradient(rgba(8, 12, 7, 0.35), rgba(8, 12, 7, 0.65)),
-    url("../assets/WhatsApp Image 2026-11-15 at 14.09.56.jpeg");
+  isolation: isolate;
+  color: #27291d;
+  font-family: "Courier New", monospace;
+}
+
+/* Trata somente a foto: menos saturação, tom envelhecido e sombra oliva. */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(21, 29, 15, 0.3), rgba(8, 12, 7, 0.65)),
+    var(--foto-fundo, url("../assets/WhatsApp Image 2026-11-15 at 14.09.56.jpeg"));
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  color: #27291d;
-  font-family: "Courier New", monospace;
+  filter: sepia(0.3) saturate(0.65) contrast(1.1);
+}
+
+/* A próxima foto aparece sobre a atual, sem escurecer a tela entre elas. */
+body::after {
+  background-image: linear-gradient(rgba(21, 29, 15, 0.3), rgba(8, 12, 7, 0.65)),
+    var(--foto-proxima, var(--foto-fundo));
+  opacity: 0;
+  transition: opacity 1.6s ease-in-out;
+}
+
+body.trocando-fundo::after {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::after {
+    transition: none;
+  }
 }
 
 /* Painel com aparência de papel velho */
