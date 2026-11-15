@@ -17,6 +17,8 @@ Thaís Augusta Pereira de Miranda | 4261216308 | Dev Módulo Diferencial
 
 **Crédito de implementação:** a implementação original do módulo de análise combinatória foi desenvolvida por [Bernardo Rocha Fernando (@bernardo486)](https://github.com/bernardo486), com integração e ajustes posteriores em etapas separadas.
 
+**Crédito de implementação:** a implementação original do módulo de funções foi desenvolvida por [Arthur Cantarutti Caldeira (@kkkantarutty)](https://github.com/kkkantarutty). A integração, as correções e a ampliação para expressões foram realizadas posteriormente.
+
 ## Sobre o projeto
 O projeto aqui presente consiste, essencialmente, em uma calculadora científica digital. Além das funções clássicas, possui funcionalidades como funções, matrizes, análise combinatória e aplicação da fórmula de Bhaskara, ampliando, assim, o conhecimento da matemática e a sua aplicação prática com o uso da computação. Esta calculadora é, basicamente, um aparelho de conexão entre as mais diversas áreas do estudo básico e um facilitador dos estudos, planejado com a sua estética escura e liminar para evocar uma nostalgia estranha e invocar, ao mesmo tempo, o entendimento das áreas aqui citadas.
 

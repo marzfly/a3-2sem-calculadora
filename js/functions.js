@@ -1,4 +1,6 @@
 ﻿const degree = document.getElementById('degree');
+// Implementação original do módulo de funções: Arthur Cantarutti Caldeira (@kkkantarutty).
+// O módulo recebeu integração, correções e ampliação para expressões posteriormente.
 const inputA = document.getElementById('a');
 const inputB = document.getElementById('b');
 const inputC = document.getElementById('c');
