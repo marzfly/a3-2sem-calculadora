@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calculadora Científica | Euler</title>
+  <link href="css/style.css" rel="stylesheet">
+  <script src="js/calculadora.js" defer></script>
+</head>
+<body class="calculadora-basica">
+  <a class="voltar" href="index.html">Voltar ao menu</a>
+  <main class="container">
+    <header class="cabecalho-calculadora">
+      <h1 class="titulo">euler <span>científica</span></h1>
+      <div class="controle-angulo">
+        <label for="angulo">Ângulo</label>
+        <select id="angulo">
+          <option value="graus">DEG</option>
+          <option value="radianos">RAD</option>
+        </select>
+      </div>
+    </header>
+
+    <label class="rotulo-visor" for="visor">Expressão</label>
+    <input type="text" id="visor" class="visor" autocomplete="off" placeholder="0" aria-describedby="ajuda-calculadora">
+    <p id="mensagem-calculadora" role="alert"></p>
+
+    <!-- Os dois teclados têm cinco linhas de botões. -->
+    <div class="painel-teclados">
+      <div class="teclado cientifico" role="group" aria-label="Funções científicas">
+        <button class="button" onclick="aplicarFuncao('sen')">sen</button>
+        <button class="button" onclick="aplicarFuncao('cos')">cos</button>
+        <button class="button" onclick="aplicarFuncao('tan')">tan</button>
+        <button class="button" onclick="aplicarFuncao('log')">log</button>
+        <button class="button" onclick="aplicarFuncao('ln')">ln</button>
+        <button class="button" onclick="aplicarFuncao('raiz')" aria-label="Raiz quadrada">√</button>
+        <button class="button" onclick="aplicarFuncao('quadrado')">x²</button>
+        <button class="button" onclick="addoperador('^')" aria-label="Potência">xʸ</button>
+        <button class="button" onclick="aplicarFuncao('fatorial')">n!</button>
+        <button class="button" onclick="inserirConstante(Math.PI)" aria-label="Pi">π</button>
+        <button class="button" onclick="inserirConstante(Math.E)" aria-label="Número de Euler">e</button>
+        <button class="button" onclick="aplicarFuncao('inverso')">1/x</button>
+        <button class="button" onclick="addnumero('(')">(</button>
+        <button class="button" onclick="addnumero(')')">)</button>
+        <button class="button" onclick="aplicarFuncao('sinal')" aria-label="Inverter sinal">+/−</button>
+      </div>
+
+      <div class="teclado numerico" role="group" aria-label="Números e operações">
+        <button class="button limpar" onclick="limpar()" aria-label="Limpar visor">AC</button>
+        <button class="button controle" onclick="apagar()" aria-label="Apagar último caractere">⌫</button>
+        <button class="button controle" onclick="aplicarFuncao('porcentagem')">%</button>
+        <button class="button operador" onclick="addoperador('/')">÷</button>
+        <button class="button" onclick="addnumero(7)">7</button>
+        <button class="button" onclick="addnumero(8)">8</button>
+        <button class="button" onclick="addnumero(9)">9</button>
+        <button class="button operador" onclick="addoperador('*')">×</button>
+        <button class="button" onclick="addnumero(4)">4</button>
+        <button class="button" onclick="addnumero(5)">5</button>
+        <button class="button" onclick="addnumero(6)">6</button>
+        <button class="button operador" onclick="addoperador('-')">−</button>
+        <button class="button" onclick="addnumero(1)">1</button>
+        <button class="button" onclick="addnumero(2)">2</button>
+        <button class="button" onclick="addnumero(3)">3</button>
+        <button class="button operador" onclick="addoperador('+')">+</button>
+        <button class="button zero" onclick="addnumero(0)">0</button>
+        <button class="button" onclick="addnumero('.')">.</button>
+        <button class="button igualdade" onclick="resultado()">=</button>
+      </div>
+    </div>
+
+    <details class="ajuda-calculadora">
+      <summary>Como usar</summary>
+      <p id="ajuda-calculadora">Digite o valor e depois escolha a função, por exemplo: 30 → sen. DEG usa graus e RAD usa radianos. A tecla % divide o valor por 100.</p>
+    </details>
+  </main>
+</body>
+</html>

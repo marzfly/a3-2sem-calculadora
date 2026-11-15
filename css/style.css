@@ -1,4 +1,4 @@
-﻿/* Estilo geral da página */
+/* Estilo geral da página */
 body {
   margin: 0;
   padding: 40px 20px;
@@ -211,4 +211,204 @@ select:focus-visible {
   padding: 10px;
   border-bottom: 1px solid #8a8b6d;
   text-align: left;
+}
+
+/* Matrizes largas podem ser roladas sem alargar o painel. */
+.grade-matriz,
+.resultado-matriz {
+  overflow-x: auto;
+  margin-top: 16px;
+}
+
+.grade-matriz input {
+  min-width: 75px;
+}
+
+#erroMatrizes {
+  color: #8b2525;
+}
+
+#modulo-matrizes #calcular {
+  margin-top: 16px;
+}
+
+/* Estilos exclusivos da calculadora científica. */
+.calculadora-basica .container {
+  max-width: 680px;
+  margin: 24px auto;
+  padding: 28px;
+}
+
+.calculadora-basica .cabecalho-calculadora {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.calculadora-basica .titulo {
+  margin: 0;
+  font-size: 32px;
+  color: #49452d;
+}
+
+.calculadora-basica .titulo span {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: normal;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.calculadora-basica .controle-angulo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.calculadora-basica .controle-angulo label {
+  margin: 0;
+  font-size: 12px;
+}
+
+.calculadora-basica .controle-angulo select {
+  width: auto;
+  padding: 8px;
+  font-size: 14px;
+}
+
+.calculadora-basica .rotulo-visor {
+  margin: 0 0 6px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+/* Visor largo, como o de uma calculadora física. */
+.calculadora-basica .visor {
+  margin: 0 0 24px;
+  padding: 20px 16px;
+  border: 2px solid #747858;
+  background-color: #e4e8ca;
+  box-shadow: inset 2px 3px 0 rgba(48, 53, 34, 0.12);
+  font-size: 34px;
+  text-align: right;
+}
+
+/* Funções à esquerda e números à direita. */
+.calculadora-basica .painel-teclados {
+  display: grid;
+  grid-template-columns: 3fr 4fr;
+  gap: 24px;
+}
+
+.calculadora-basica .teclado {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.calculadora-basica .cientifico {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.calculadora-basica .button {
+  min-width: 0;
+  min-height: 48px;
+  padding: 8px 0;
+  font-family: Arial, sans-serif;
+  font-size: 21px;
+  border-radius: 3px;
+  box-shadow: 0 3px 0 #666b4c;
+}
+
+.calculadora-basica .button:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+.calculadora-basica .cientifico .button {
+  background-color: #b7be91;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.calculadora-basica .cientifico .button:hover {
+  background-color: #a5af7d;
+}
+
+.calculadora-basica .operador {
+  background-color: #665136;
+  border-color: #493b25;
+  color: #fff9e7;
+}
+
+.calculadora-basica .operador:hover {
+  background-color: #4d3d28;
+}
+
+.calculadora-basica .controle {
+  background-color: #c4c3a6;
+  font-size: 16px;
+}
+
+.calculadora-basica .controle:hover {
+  background-color: #b0b093;
+}
+
+.calculadora-basica .limpar {
+  background-color: #854e3b;
+  border-color: #623827;
+  color: #fff9e7;
+  font-size: 16px;
+}
+
+.calculadora-basica .limpar:hover {
+  background-color: #6a3c2c;
+}
+
+.calculadora-basica .igualdade {
+  background-color: #343b27;
+  color: #fff9e7;
+}
+
+.calculadora-basica .igualdade:hover {
+  background-color: #202719;
+}
+
+/* O zero ocupa duas colunas para completar a última linha. */
+.calculadora-basica .zero {
+  grid-column: span 2;
+}
+
+.calculadora-basica .ajuda-calculadora {
+  margin-top: 24px;
+  padding-top: 12px;
+  border-top: 1px dashed #777950;
+  font-size: 12px;
+}
+
+.calculadora-basica summary {
+  cursor: pointer;
+}
+
+#mensagem-calculadora {
+  color: #8b2525;
+}
+
+#mensagem-calculadora:empty {
+  display: none;
+}
+
+/* Em telas pequenas, os teclados ficam um abaixo do outro. */
+@media (max-width: 600px) {
+  .calculadora-basica .container {
+    padding: 20px;
+  }
+
+  .calculadora-basica .painel-teclados {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 }

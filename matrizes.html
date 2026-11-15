@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Matrizes | Euler</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/matrizes.js" defer></script>
+</head>
+<body>
+  <a class="voltar" href="index.html">Voltar ao menu</a>
+  <main class="container">
+    <section id="modulo-matrizes">
+      <h1>Calculadora de Matrizes</h1>
+      <p>Escolha as dimensões e preencha os elementos das matrizes.</p>
+      <div>
+        <h2>Matriz A</h2>
+        <label for="linA">Linhas:</label>
+        <input type="number" id="linA" value="2" min="1" max="8">
+        <label for="colA">Colunas:</label>
+        <input type="number" id="colA" value="2" min="1" max="8">
+        <div id="matrizA" class="grade-matriz"></div>
+      </div>
+      <div id="campoMatrizB">
+        <h2>Matriz B</h2>
+        <label for="linB">Linhas:</label>
+        <input type="number" id="linB" value="2" min="1" max="8">
+        <label for="colB">Colunas:</label>
+        <input type="number" id="colB" value="2" min="1" max="8">
+        <div id="matrizB" class="grade-matriz"></div>
+      </div>
+      <label for="operacao">Operação:</label>
+      <select id="operacao">
+        <option value="soma">Soma</option>
+        <option value="subtracao">Subtração</option>
+        <option value="escalar">Multiplicação de A por escalar</option>
+        <option value="multiplicacao">Multiplicação de matrizes (A × B)</option>
+        <option value="determinante">Determinante de A</option>
+        <option value="transposta">Transposta de A</option>
+      </select>
+      <div id="campoEscalar" hidden>
+        <label for="escalar">Escalar:</label>
+        <input type="number" id="escalar" value="2" step="any">
+      </div>
+      <p id="erroMatrizes" role="alert"></p>
+      <button id="calcular" type="button">Calcular</button>
+      <h2>Resultado</h2>
+      <div id="resultado" class="resultado-matriz" aria-live="polite"></div>
+    </section>
+  </main>
+</body>
+</html>
