@@ -28,7 +28,7 @@ O projeto aqui presente consiste, essencialmente, em uma calculadora científica
 
 1. Baixe ou clone este repositório.
 2. Abra o arquivo `index.html` no navegador.
-3. No menu, escolha **Calculadora científica**, **Análise combinatória**, **Funções** ou **Matrizes**.
+3. No menu, escolha **Calculadora científica**, **Análise combinatória**, **Funções**, **Matrizes** ou **Raízes do segundo grau**.
 
 Não é necessário instalar dependências ou iniciar um servidor. O gráfico da página de funções usa a biblioteca Chart.js, carregada por CDN, e precisa de conexão com a internet.
 
@@ -84,6 +84,15 @@ Alterar as dimensões recria os campos da matriz com zero. A matriz B só aparec
 
 Os módulos científico, de funções e de matrizes usam o tipo `Number` do JavaScript. Por isso, resultados decimais e números muito grandes podem apresentar aproximações.
 
+### Raízes do segundo grau
+
+- Cálculo de raízes reais de `ax² + bx + c = 0`, com `a` diferente de zero.
+- Resolução com substituição dos coeficientes no delta e na fórmula de Bhaskara.
+- Classificação entre duas raízes reais, raiz dupla e ausência de raízes reais.
+- Validação de campos e dos limites numéricos, incluindo coeficientes pequenos demais para o cálculo confiável do delta.
+
+Exemplo: `a=1`, `b=-3`, `c=2` resulta em delta `1` e raízes `1` e `2`. O módulo trabalha com raízes reais aproximadas; não calcula raízes complexas.
+
 ## Organização dos arquivos
 
 - `index.html`: menu principal.
@@ -91,14 +100,22 @@ Os módulos científico, de funções e de matrizes usam o tipo `Number` do Java
 - `combinatoria.html`: formulário e resultados de análise combinatória.
 - `funcoes.html`: interface de funções de primeiro e segundo grau.
 - `matrizes.html`: interface das operações com matrizes.
+- `diferencial.html`: resolução de equações do segundo grau.
 - `js/calculadora.js`: leitura das expressões e funções científicas.
 - `js/matematica.js`: leitor de expressões e formatação numérica compartilhados.
 - `js/script.js`: cálculos e validação da análise combinatória.
 - `js/functions.js`: cálculos, análise, gráfico e tabela de funções.
 - `js/matrizes.js`: criação dos campos, validação e operações com matrizes.
+- `js/raizes.js`: cálculo das raízes reais do segundo grau.
+- `js/diferencial.js`: formulário e resolução passo a passo do módulo de raízes.
+- `js/fundo.js`: troca de fundos com fade, preservando o estado durante a navegação.
 - `css/style.css`: estilos compartilhados pelas páginas do projeto.
 - `assets/`: imagens usadas na interface.
 - `tests/matematica.test.cjs`: testes matemáticos que podem ser executados com `node --test tests/matematica.test.cjs`.
+- `tests/raizes.test.cjs`: testes de raízes e validações numéricas.
+- `docs/RELATORIO_QA.md`: resultados, correções, limites da avaliação e roteiro manual de testes.
+
+Para executar toda a suíte matemática: `node --test tests/matematica.test.cjs tests/raizes.test.cjs`. A avaliação de 19/11/2026 terminou com 75 testes matemáticos e 210 verificações de navegador aprovados; os procedimentos e limites estão no relatório de QA.
 
 ## Estilo visual
 
