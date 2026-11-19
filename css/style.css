@@ -444,6 +444,19 @@ select:focus-visible {
   color: #8b2525;
 }
 
+/* Resolução do módulo de raízes. */
+#erro-raizes {
+  color: #8b2525;
+}
+
+#saida-raizes {
+  margin-top: 24px;
+  padding: 16px;
+  border: 1px dashed #777950;
+  background-color: #e5e2c8;
+  overflow-wrap: anywhere;
+}
+
 #mensagem-calculadora:empty {
   display: none;
 }

@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Raízes do segundo grau | Euler</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/fundo.js" defer></script>
+  <script src="js/matematica.js" defer></script>
+  <script src="js/raizes.js" defer></script>
+  <script src="js/diferencial.js" defer></script>
+</head>
+<body>
+  <a class="voltar" href="index.html">Voltar ao menu</a>
+  <main class="container">
+    <h1>Raízes do segundo grau</h1>
+    <p>Encontre as raízes reais de uma equação na forma ax² + bx + c = 0.</p>
+    <form id="form-raizes" novalidate>
+      <label for="raiz-a">Coeficiente a (diferente de zero)</label>
+      <input id="raiz-a" type="number" step="any" value="1" required>
+      <label for="raiz-b">Coeficiente b</label>
+      <input id="raiz-b" type="number" step="any" value="-3" required>
+      <label for="raiz-c">Coeficiente c</label>
+      <input id="raiz-c" type="number" step="any" value="2" required>
+      <button type="submit">Calcular raízes</button>
+    </form>
+    <p id="erro-raizes" role="alert"></p>
+    <section id="saida-raizes" aria-live="polite" hidden>
+      <h2>Resolução</h2>
+      <p id="equacao-raizes"></p>
+      <h3>1. Calcular o delta</h3>
+      <p>Δ = b² − 4ac</p>
+      <p id="conta-delta"></p>
+      <p>Δ = <strong id="valor-delta"></strong></p>
+      <h3>2. Aplicar Bhaskara</h3>
+      <p>x = (−b ± √Δ) / (2a)</p>
+      <p id="conta-bhaskara"></p>
+      <h3>3. Resultado</h3>
+      <p id="tipo-raizes"></p>
+      <p id="valor-raizes"></p>
+      <p>Os cálculos são aproximados e consideram apenas raízes reais.</p>
+    </section>
+  </main>
+</body>
+</html>
