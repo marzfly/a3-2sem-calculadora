@@ -161,4 +161,9 @@ for (const nome of ['A', 'B']) {
 }
 elemento('operacao').addEventListener('change', atualizarOperacao);
 elemento('calcular').addEventListener('click', calcularMatrizes);
+// Campos das matrizes são criados depois: o evento sobe até a seção principal.
+elemento('modulo-matrizes').addEventListener('input', () => {
+  elemento('resultado').replaceChildren();
+  elemento('erroMatrizes').textContent = '';
+});
 atualizarOperacao();

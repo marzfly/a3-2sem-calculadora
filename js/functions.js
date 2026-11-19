@@ -95,8 +95,8 @@ function polynomialAnalysis(a, b, c, isQuadratic) {
       ['Intercepto em y', format(b)]
     ];
   }
-  const bQuadrado = Matematica.finito(b * b);
-  const quatroAC = Matematica.finito(4 * (a * c));
+  const bQuadrado = Matematica.produtoFinito(b, b);
+  const quatroAC = Matematica.produtoFinito(4, Matematica.produtoFinito(a, c));
   let delta = Matematica.finito(bQuadrado - quatroAC);
   // Corrige somente o erro de arredondamento relativo à escala da conta.
   // Não transforma deltas pequenos legítimos em zero por uma regra fixa.
@@ -161,7 +161,8 @@ function renderChart(calcular, intervalo) {
   }
   const points = [];
   for (let i = 0; i <= 100; i++) {
-    const x = i === 100 ? intervalo.end : intervalo.start + (intervalo.end - intervalo.start) * i / 100;
+    // Divide antes de multiplicar para não estourar intervalos grandes válidos.
+    const x = i === 100 ? intervalo.end : intervalo.start + (intervalo.end - intervalo.start) * (i / 100);
     const ponto = sample(calcular, x);
     // null deixa uma lacuna; a linha não atravessa o ponto indefinido.
     points.push({ x, y: ponto.value });

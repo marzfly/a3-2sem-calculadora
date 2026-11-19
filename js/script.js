@@ -190,6 +190,10 @@ function calcular(ev) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  $('form').addEventListener('input', () => {
+    $('saida').hidden = true;
+    $('erro').textContent = '';
+  });
   $('tipo').addEventListener('change', atualizarCampos);
   $('form').addEventListener('submit', calcular);
   atualizarCampos();

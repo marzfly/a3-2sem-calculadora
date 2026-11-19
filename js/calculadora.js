@@ -107,6 +107,15 @@ visor.addEventListener('keydown', (evento) => {
   }
   if (evento.key === 'Escape') limpar();
 });
+
+// A digitação física precisa seguir a mesma regra dos botões após o igual.
+visor.addEventListener('beforeinput', evento => {
+  if (resultadoConcluido && evento.inputType.startsWith('insert')) {
+    const texto = evento.data || '';
+    if (!/^[+\-*/^]/.test(texto)) visor.value = '';
+    resultadoConcluido = false;
+  }
+});
 visor.addEventListener('input', () => {
   resultadoConcluido = false;
   mensagem.textContent = '';

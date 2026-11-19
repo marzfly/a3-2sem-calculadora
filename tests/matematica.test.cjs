@@ -72,3 +72,11 @@ test('funções digitadas podem usar graus sem mudar o padrão em radianos', () 
   assert.equal(matematica.avaliar('sen(pi/2)'), 1);
   assert.throws(() => matematica.avaliar('tan(90)', undefined, 'graus'), erro => erro.tipo === 'dominio');
 });
+
+test('produto numérico usado no delta recusa estouro e perda para zero', () => {
+  assert.equal(matematica.produtoFinito(2, 3), 6);
+  assert.equal(matematica.produtoFinito(0, 1e-200), 0);
+  assert.throws(() => matematica.produtoFinito(1e308, 2));
+  assert.throws(() => matematica.produtoFinito(1e-200, 1e-200));
+  assert.throws(() => matematica.produtoFinito(1e-160, 1e-160));
+});

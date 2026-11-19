@@ -11,6 +11,16 @@ const Matematica = (() => {
     return valor;
   }
 
+  // Um produto muito pequeno pode virar zero em Number (underflow).
+  // Nesse caso, recusa a análise em vez de apresentar uma raiz incorreta.
+  function produtoFinito(a, b) {
+    const valor = finito(a * b);
+    if (a !== 0 && b !== 0 && Math.abs(valor) < 2.2250738585072014e-308) {
+      throw erro('Os coeficientes são pequenos demais para este cálculo. Multiplique todos por um mesmo fator e tente novamente.', 'limite');
+    }
+    return valor;
+  }
+
   // Preserva números pequenos e evita textos enormes nos resultados.
   function formatar(valor) {
     finito(valor);
@@ -168,5 +178,5 @@ const Matematica = (() => {
     return { calcular: x => calcularNo(arvore, x) };
   }
 
-  return { compilar, avaliar: (texto, x, unidade) => compilar(texto, unidade).calcular(x), formatar, finito, erro };
+  return { compilar, avaliar: (texto, x, unidade) => compilar(texto, unidade).calcular(x), formatar, finito, produtoFinito, erro };
 })();
